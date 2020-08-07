@@ -49,12 +49,12 @@
       dest: /var/www/html/
       remote_src: yes
   - name: rename sample wordpress on instances
-    command: "mv /var/www/html/wordpress/wp-config-sample.php /var/www/html/wordpress/wp-config.php"
+    command: "mv /var/www/html/wordpress/wp-config-sample.php  /var/www/html/wordpress/wp-config.php"
   - name: move wordpress files to /var/www/html
     shell: "mv /var/www/html/wordpress/* /var/www/html"
     ignore_errors: true
   - name: change ownership of wordpress
-    command: "chown -R apache:apache /var/www/html/wordpress"
+    command: "chown -R apache:apache /var/www/html"
   - name: update wordpress conf file on instances db-name
     lineinfile:
       dest: /var/www/html/wp-config.php
@@ -106,7 +106,7 @@
     with_items:
     - httpd
     - mariadb
-    
+
   # - route53:
   #     state: present
   #     zone: maxirs.com
